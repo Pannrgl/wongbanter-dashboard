@@ -1,7 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/", "destination": "/ui/portfolio.html" },
+    { "source": "/", "destination": "/ui/landing.html" },
+    { "source": "/dashboard", "destination": "/ui/portfolio.html" },
+    { "source": "/app", "destination": "/ui/portfolio.html" },
     { "source": "/assets/:path*", "destination": "/ui/:path*" }
   ],
   "functions": {

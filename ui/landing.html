@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WongBanter Capital — Institutional-Grade Trading Capital</title>
+    <meta
+      name="description"
+      content="WongBanter Capital adalah platform trading capital modern dengan eksekusi presisi, risk intelligence, dan dashboard realtime untuk trader yang ingin scale secara profesional."
+    />
+    <meta name="theme-color" content="#060a12" />
+    <link rel="canonical" href="https://wongbantercapital.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WongBanter Capital — Trade With Institutional Precision" />
+    <meta
+      property="og:description"
+      content="Modern trading capital platform: ultra-low latency execution, risk intelligence, realtime monitoring, dan workflow yang rapi untuk scale."
+    <meta property="og:url" content="https://wongbantercapital.com/" />
+    <meta property="og:site_name" content="WongBanter Capital" />
+    <meta property="og:image" content="https://wongbantercapital.com/og-wbc.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+      content="Capital built for modern traders: institutional execution, risk intelligence, realtime dashboard."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/landing.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "WongBanter Capital",
+        "url": "https://wongbantercapital.com/",
+        "sameAs": []
+      }
+    </script>
+  </head>
+  <body>
+    <div class="cursor" aria-hidden="true">
+      <div class="cursor-dot"></div>
+      <div class="cursor-halo"></div>
+    </div>
+
+    <div class="bg" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-glow g1"></div>
+      <div class="bg-glow g2"></div>
+      <div class="bg-glow g3"></div>
+      <div class="bg-noise"></div>
+    </div>
+
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="/" aria-label="WongBanter Capital">
+          <span class="brand-mark">WB</span>
+          <span class="brand-text">
+            <span class="brand-title">WongBanter Capital</span>
+            <span class="brand-sub">Institutional trading capital</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#why" class="nav-link">Why WBC</a>
+          <a href="#testimonials" class="nav-link">Testimonials</a>
+        </nav>
+        <div class="nav-cta">
+          <a href="/dashboard" class="btn ghost">Dashboard</a>
+          <a href="#cta" class="btn primary magnetic">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="ticker" aria-label="Market ticker">
+          <div class="ticker-track" role="marquee" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Capital built for modern traders</span>
+              <span class="badge-chip">Ultra-Low Latency</span>
+            </div>
+            <h1 class="hero-title">
+              Trade With Institutional
+              <span class="grad">Precision</span>
+            </h1>
+            <p class="hero-sub">
+              WongBanter Capital menghadirkan eksekusi cepat, risk intelligence, dan monitoring realtime—dirancang untuk trader yang ingin
+              scale secara disiplin, rapi, dan profesional.
+            </p>
+            <div class="hero-actions">
+              <a href="#cta" class="btn primary magnetic">Start Evaluation</a>
+              <a href="#stats" class="btn ghost">View Stats</a>
+            </div>
+            <div class="hero-trust">
+              <div class="trust-line">
+                <span class="trust-label">Built for</span>
+                <span class="trust-pill">Prop traders</span>
+                <span class="trust-pill">Systematic traders</span>
+                <span class="trust-pill">Risk-first desks</span>
+              </div>
+              <div class="trust-meta">
+                <span class="trust-k">Secure transport</span>
+                <span class="sep">•</span>
+                <span class="trust-k">Realtime monitoring</span>
+                <span class="sep">•</span>
+                <span class="trust-k">Audit-ready logs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Trading visualization">
+            <div class="visual-shell" data-parallax="shell">
+              <div class="visual-top">
+                <div class="visual-title">
+                  <span class="vt-main">Execution Console</span>
+                  <span class="vt-sub">Realtime latency & risk</span>
+                </div>
+                <div class="visual-pills">
+                  <span class="pill">WBC Edge</span>
+                  <span class="pill ok">Live</span>
+                </div>
+              </div>
+              <div class="visual-grid">
+                <div class="chart">
+                  <div class="chart-head">
+                    <div class="ch-left">
+                      <span class="mono">WBX • Multi-Asset</span>
+                      <span class="dim">Depth + Execution</span>
+                    </div>
+                    <div class="ch-right">
+                      <span class="chip good" id="latencyChip">— ms</span>
+                      <span class="chip" id="uptimeChip">99.99%</span>
+                    </div>
+                  </div>
+                  <div class="chart-body">
+                    <div class="candles" id="candles" aria-hidden="true"></div>
+                    <svg class="spark" viewBox="0 0 680 280" preserveAspectRatio="none" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="sparkLine" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0" stop-color="rgba(34, 255, 175, 0.95)" />
+                          <stop offset="1" stop-color="rgba(255, 215, 95, 0.65)" />
+                        </linearGradient>
+                        <linearGradient id="sparkArea" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stop-color="rgba(34, 255, 175, 0.25)" />
+                          <stop offset="1" stop-color="rgba(34, 255, 175, 0)" />
+                        </linearGradient>
+                        <filter id="glow">
+                          <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                          <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <path class="spark-area" id="sparkArea" d="" fill="url(#sparkArea)"></path>
+                      <path class="spark-line" id="sparkLinePath" d="" stroke="url(#sparkLine)" stroke-width="2.6" fill="none" filter="url(#glow)"></path>
+                    </svg>
+                    <div class="chart-overlay">
+                      <div class="floating f1" data-parallax="card">
+                        <div class="f-title">Risk Engine</div>
+                        <div class="f-val mono">Adaptive</div>
+                        <div class="f-sub">Dynamic exposure + rules</div>
+                      </div>
+                      <div class="floating f2" data-parallax="card">
+                        <div class="f-title">Execution</div>
+                        <div class="f-val mono" id="execVal">—</div>
+                        <div class="f-sub">Fill quality score</div>
+                      </div>
+                      <div class="floating f3" data-parallax="card">
+                        <div class="f-title">Monitoring</div>
+                        <div class="f-val mono">Realtime</div>
+                        <div class="f-sub">Portfolio + positions</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="side">
+                  <div class="side-card">
+                    <div class="sc-head">
+                      <span class="sc-title">Live Market</span>
+                      <span class="sc-chip mono" id="clockChip">—</span>
+                    </div>
+                    <div class="market" id="marketList" aria-live="polite"></div>
+                  </div>
+                  <div class="side-card">
+                    <div class="sc-head">
+                      <span class="sc-title">Capital Program</span>
+                      <span class="sc-chip good">Transparent</span>
+                    </div>
+                    <div class="mini-list">
+                      <div class="mini">
+                        <span class="mini-k">Scaling</span>
+                        <span class="mini-v mono">Up to 10×</span>
+                      </div>
+                      <div class="mini">
+                        <span class="mini-k">Risk Rules</span>
+                        <span class="mini-v mono">Clear</span>
+                      </div>
+                      <div class="mini">
+                        <span class="mini-k">Payouts</span>
+                        <span class="mini-v mono">On-demand</span>
+                      </div>
+                    </div>
+                    <a href="#cta" class="mini-cta btn ghost">View Plans</a>
+                  </div>
+                </div>
+              </div>
+              <div class="visual-foot">
+                <div class="vf">
+                  <span class="vfk">Secure</span>
+                  <span class="vfv">TLS transport</span>
+                </div>
+                <div class="vf">
+                  <span class="vfk">Latency</span>
+                  <span class="vfv">monitoring</span>
+                </div>
+                <div class="vf">
+                  <span class="vfk">Ops</span>
+                  <span class="vfv">24/7 alerts</span>
+                </div>
+              </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+              <span class="si-text">Scroll</span>
+              <span class="si-dot"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stats" id="stats">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2 class="section-title">Trust, transparency, and performance</h2>
+            <p class="section-sub">
+              Angka di bawah bisa kamu sesuaikan sesuai performa real kamu. Untuk versi demo, statistik di-render dengan animasi counter.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card reveal">
+              <div class="stat-top">
+                <div class="stat-k">Funded traders</div>
+                <div class="stat-badge">Growth</div>
+              </div>
+              <div class="stat-v mono" data-counter="1482">0</div>
+              <div class="stat-sub">Active capital accounts</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-top">
+                <div class="stat-k">Total payouts</div>
+                <div class="stat-badge good">Payout</div>
+              </div>
+              <div class="stat-v mono"><span data-counter="12.8">0</span><span class="unit">M</span></div>
+              <div class="stat-sub">USD equivalent</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-top">
+                <div class="stat-k">Execution speed</div>
+                <div class="stat-badge">Infra</div>
+              </div>
+              <div class="stat-v mono"><span data-counter="38">0</span><span class="unit">ms</span></div>
+              <div class="stat-sub">Median order routing</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-top">
+                <div class="stat-k">Uptime</div>
+                <div class="stat-badge ok">Stable</div>
+              </div>
+              <div class="stat-v mono"><span data-counter="99.99">0</span><span class="unit">%</span></div>
+              <div class="stat-sub">Realtime monitoring</div>
+            </div>
+          </div>
+
+          <div class="logos reveal" aria-label="Logos">
+            <div class="logo-row">
+              <span class="logo-chip">TradingView alerts</span>
+              <span class="logo-chip">Risk-first design</span>
+              <span class="logo-chip">Realtime dashboard</span>
+              <span class="logo-chip">Institutional workflow</span>
+              <span class="logo-chip">Audit-friendly</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section features" id="features">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2 class="section-title">Edge for serious execution</h2>
+            <p class="section-sub">Semua yang kamu butuhkan untuk trading capital yang rapi: dari latensi hingga risk controls.</p>
+          </div>
+
+          <div class="feature-grid">
+            <div class="feature-card reveal">
+              <div class="icon i1" aria-hidden="true"></div>
+              <h3 class="feature-title">Ultra low latency</h3>
+              <p class="feature-sub">Routing cepat dan konsisten dengan telemetry realtime untuk menjaga fill quality.</p>
+            </div>
+            <div class="feature-card reveal">
+              <div class="icon i2" aria-hidden="true"></div>
+              <h3 class="feature-title">Smart risk management</h3>
+              <p class="feature-sub">Risk rules yang tegas, adaptive exposure, dan guardrails untuk disiplin.</p>
+            </div>
+            <div class="feature-card reveal">
+              <div class="icon i3" aria-hidden="true"></div>
+              <h3 class="feature-title">Institutional execution</h3>
+              <p class="feature-sub">Workflow mirip desk: clear logs, clear decisions, dan monitoring yang bisa diaudit.</p>
+            </div>
+            <div class="feature-card reveal">
+              <div class="icon i4" aria-hidden="true"></div>
+              <h3 class="feature-title">AI analytics</h3>
+              <p class="feature-sub">Insight untuk membantu evaluasi: consistency, risk profile, dan behavioral signals.</p>
+            </div>
+            <div class="feature-card reveal">
+              <div class="icon i5" aria-hidden="true"></div>
+              <h3 class="feature-title">Realtime monitoring</h3>
+              <p class="feature-sub">Dashboard realtime untuk posisi, equity curve, dan journal yang clean.</p>
+            </div>
+            <div class="feature-card reveal">
+              <div class="icon i6" aria-hidden="true"></div>
+              <h3 class="feature-title">Scaling capital</h3>
+              <p class="feature-sub">Sistem scaling untuk trader yang stabil, bukan yang hanya “sekali hit”.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section experience" id="experience">
+        <div class="container">
+          <div class="experience-grid">
+            <div class="experience-copy reveal">
+              <h2 class="section-title">A trading desk experience, online</h2>
+              <p class="section-sub">
+                Rasakan nuansa institutional: market depth, realtime execution cues, dan risk dashboard yang fokus ke clarity—bukan noise.
+              </p>
+              <div class="bullets">
+                <div class="bullet">
+                  <span class="b-dot"></span>
+                  <span class="b-text">Multi-asset monitoring dengan timeline events</span>
+                </div>
+                <div class="bullet">
+                  <span class="b-dot"></span>
+                  <span class="b-text">Live portfolio metrics: balance, equity, realized PnL</span>
+                </div>
+                <div class="bullet">
+                  <span class="b-dot"></span>
+                  <span class="b-text">Journal yang searchable untuk evaluasi</span>
+                </div>
+              </div>
+              <a class="btn ghost magnetic" href="/dashboard">Open Live Dashboard</a>
+            </div>
+            <div class="experience-panels reveal" aria-label="Experience panels">
+              <div class="panel p1" data-parallax="panel">
+                <div class="p-head">
+                  <span class="p-title">Depth + Execution</span>
+                  <span class="p-chip">Realtime</span>
+                </div>
+                <div class="p-body">
+                  <div class="bars" aria-hidden="true"></div>
+                  <div class="p-meta">
+                    <span class="mono">Order book signals</span>
+                    <span class="dim">Smart routing</span>
+                  </div>
+                </div>
+              </div>
+              <div class="panel p2" data-parallax="panel">
+                <div class="p-head">
+                  <span class="p-title">Risk Console</span>
+                  <span class="p-chip good">Protected</span>
+                </div>
+                <div class="p-body">
+                  <div class="ring" aria-hidden="true"></div>
+                  <div class="p-meta">
+                    <span class="mono">Adaptive exposure</span>
+                    <span class="dim">Rule enforcement</span>
+                  </div>
+                </div>
+              </div>
+              <div class="panel p3" data-parallax="panel">
+                <div class="p-head">
+                  <span class="p-title">Trader Dashboard</span>
+                  <span class="p-chip">Clean UI</span>
+                </div>
+                <div class="p-body">
+                  <div class="mini-kpis">
+                    <div class="mk">
+                      <span class="mkk">Equity</span>
+                      <span class="mkv mono" id="miniEq">—</span>
+                    </div>
+                    <div class="mk">
+                      <span class="mkk">Winrate</span>
+                      <span class="mkv mono" id="miniWr">—</span>
+                    </div>
+                    <div class="mk">
+                      <span class="mkk">PF</span>
+                      <span class="mkv mono" id="miniPf">—</span>
+                    </div>
+                  </div>
+                  <div class="p-meta">
+                    <span class="mono">Realtime sync</span>
+                    <span class="dim">Fast refresh</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section why" id="why">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2 class="section-title">Why choose WongBanter Capital</h2>
+            <p class="section-sub">Bukan sekadar “challenge”. Ini program dengan sistem, disiplin, dan eksekusi yang bisa diandalkan.</p>
+          </div>
+          <div class="why-grid">
+            <div class="why-card reveal">
+              <div class="why-top">
+                <span class="why-k">Institutional clarity</span>
+                <span class="why-tag">Process</span>
+              </div>
+              <div class="why-v">Less noise, more signal.</div>
+              <div class="why-sub">Decision flow yang rapi: entries, exits, risk, dan monitoring.</div>
+            </div>
+            <div class="why-card reveal">
+              <div class="why-top">
+                <span class="why-k">Risk-first</span>
+                <span class="why-tag good">Guardrails</span>
+              </div>
+              <div class="why-v">Designed to protect capital.</div>
+              <div class="why-sub">Rule enforcement untuk konsistensi, bukan gambling.</div>
+            </div>
+            <div class="why-card reveal">
+              <div class="why-top">
+                <span class="why-k">Realtime visibility</span>
+                <span class="why-tag">Monitoring</span>
+              </div>
+              <div class="why-v">Know what’s happening.</div>
+              <div class="why-sub">Dashboard realtime untuk portfolio, positions, dan journal.</div>
+            </div>
+            <div class="why-card reveal">
+              <div class="why-top">
+                <span class="why-k">Modern infrastructure</span>
+                <span class="why-tag">Tech</span>
+              </div>
+              <div class="why-v">Fast, resilient, secure.</div>
+              <div class="why-sub">Telemetry dan alerts untuk menjaga reliability.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials" id="testimonials">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2 class="section-title">Traders feel the difference</h2>
+            <p class="section-sub">Testimoni ini contoh untuk demo. Ganti dengan review real saat sudah live.</p>
+          </div>
+          <div class="test-grid">
+            <div class="test-card reveal">
+              <div class="test-top">
+                <div class="avatar a1" aria-hidden="true"></div>
+                <div class="test-meta">
+                  <div class="test-name">Rafi A.</div>
+                  <div class="test-role">XAU / FX trader</div>
+                </div>
+                <div class="stars" aria-label="5 stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+              </div>
+              <div class="test-quote">
+                Dashboard-nya clean. Yang paling kerasa: discipline jadi kebentuk karena monitoring & rulesnya jelas.
+              </div>
+            </div>
+            <div class="test-card reveal">
+              <div class="test-top">
+                <div class="avatar a2" aria-hidden="true"></div>
+                <div class="test-meta">
+                  <div class="test-name">Nadia S.</div>
+                  <div class="test-role">Index trader</div>
+                </div>
+                <div class="stars" aria-label="5 stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+              </div>
+              <div class="test-quote">
+                UX-nya terasa premium. Fokus ke data penting, bukan gimmick. Enak buat review history & performa.
+              </div>
+            </div>
+            <div class="test-card reveal">
+              <div class="test-top">
+                <div class="avatar a3" aria-hidden="true"></div>
+                <div class="test-meta">
+                  <div class="test-name">Kevin T.</div>
+                  <div class="test-role">Systematic trader</div>
+                </div>
+                <div class="stars" aria-label="5 stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+              </div>
+              <div class="test-quote">
+                Infrastructure metrics-nya bikin percaya. Ada latency cue dan visual risk yang membantu ambil keputusan.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="cta">
+        <div class="container">
+          <div class="cta-shell reveal">
+            <div class="cta-copy">
+              <h2 class="cta-title">Ready to trade with institutional clarity?</h2>
+              <p class="cta-sub">Mulai dari evaluasi yang rapi. Scale capital ketika konsistensi kamu terbukti.</p>
+              <div class="cta-actions">
+                <a class="btn primary magnetic" href="/dashboard">Open Dashboard</a>
+                <a class="btn ghost magnetic" href="#top">Back to Top</a>
+              </div>
+            </div>
+            <div class="cta-metrics">
+              <div class="cm">
+                <span class="cm-k">Infra</span>
+                <span class="cm-v mono">Realtime</span>
+              </div>
+              <div class="cm">
+                <span class="cm-k">Risk</span>
+                <span class="cm-v mono">Guarded</span>
+              </div>
+              <div class="cm">
+                <span class="cm-k">Ops</span>
+                <span class="cm-v mono">Alerts</span>
+              </div>
+            </div>
+          </div>
+          <div class="disclaimer">
+            <p class="dim">
+              Risk disclosure: Trading memiliki risiko. Konten ini bersifat informasi dan tidak merupakan nasihat investasi.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="brand-mini">
+            <span class="brand-mark">WB</span>
+            <span class="brand-title">WongBanter Capital</span>
+          </div>
+          <div class="dim">Modern trading capital platform — built for precision, trust, and execution.</div>
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#experience">Experience</a>
+          <a href="#why">Why WBC</a>
+          <a href="#cta">Get Started</a>
+        </div>
+        <div class="footer-legal">
+          <div class="dim">© <span id="year"></span> WongBanter Capital</div>
+          <div class="dim">All rights reserved</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/landing.js" defer></script>
+  </body>
+</html>
