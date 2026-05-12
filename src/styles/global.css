@@ -34,6 +34,12 @@ body {
   overflow-x: hidden;
 }
 
+body.wbcDashboard {
+  background: radial-gradient(900px 620px at 72% -6%, rgba(124, 92, 255, 0.2), transparent 60%),
+    radial-gradient(900px 620px at -10% 92%, rgba(22, 163, 255, 0.14), transparent 60%),
+    #070812;
+}
+
 #root {
   width: 100%;
   overflow-x: hidden;

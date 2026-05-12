@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Seo } from "../components/common/Seo";
+import { setSession } from "../lib/session";
 import styles from "../styles/register.module.css";
 
 type FormState = {
@@ -87,7 +88,8 @@ export function Register() {
       return;
     }
     setDone(true);
-    setTimeout(() => navigate("/track"), 700);
+    setSession({ email: state.email, fullName: state.fullName });
+    setTimeout(() => navigate("/dashboard", { replace: true }), 700);
   };
 
   return (
@@ -134,7 +136,7 @@ export function Register() {
             </div>
 
             {errors.form ? <div className={styles.formError}>{errors.form}</div> : null}
-            {done ? <div className={styles.formOk}>Account created. Redirecting to Track My Portfolio…</div> : null}
+            {done ? <div className={styles.formOk}>Account created. Redirecting to Dashboard…</div> : null}
 
             <label className={styles.field}>
               <span className={styles.label}>Full name</span>
