@@ -129,11 +129,7 @@ export function Track() {
     <main className={styles.page}>
       <Seo title="Track My Portfolio — WongBanter Capital" description="Track account performance, equity, and positions in real time." />
 
-      <div className={styles.bg}>
-        <div className={`${styles.glow} ${styles.g1}`}></div>
-        <div className={`${styles.glow} ${styles.g2}`}></div>
-        <div className={`${styles.glow} ${styles.g3}`}></div>
-      </div>
+      <div className={styles.bg} aria-hidden="true" />
 
       <div className={styles.head}>
         <div className={styles.headTop}>
@@ -188,7 +184,7 @@ export function Track() {
             </div>
             <span className={styles.chip}>Live Data</span>
           </div>
-          <div className={styles.kpis} style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div className={`${styles.kpis} ${styles.kpisWide}`}>
             <div className={styles.kpi}>
               <span className={styles.k}>Balance</span>
               <span className={styles.v}>{fmt(state?.account?.balance, 2)}{currency ? ` ${currency}` : ""}</span>
@@ -230,8 +226,8 @@ export function Track() {
                 <span>Time (Close)</span>
                 <span>Symbol</span>
                 <span>Side</span>
-                <span className={styles.right}>Open</span>
-                <span className={styles.right}>Close</span>
+              <span className={`${styles.right} ${styles.colHide}`}>Open</span>
+              <span className={`${styles.right} ${styles.colHide}`}>Close</span>
                 <span className={styles.right}>PnL</span>
               </div>
               {(state?.closed_trades || []).slice(0, 30).map((t) => {
@@ -239,13 +235,13 @@ export function Track() {
                 const timeStr = date.toLocaleTimeString("id-ID", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
                 return (
                   <div key={t.position_id} className={styles.trow}>
-                    <span className={styles.mono} style={{ color: "rgba(255,255,255,0.6)" }}>{timeStr}</span>
+                  <span className={`${styles.mono} ${styles.muted}`}>{timeStr}</span>
                     <span className={styles.mono}>{t.symbol}</span>
                     <span>
                       <span className={t.side === "BUY" ? styles.buy : styles.sell}>{t.side}</span>
                     </span>
-                    <span className={`${styles.right} ${styles.mono}`}>{t.price_open}</span>
-                    <span className={`${styles.right} ${styles.mono}`}>{t.close_price}</span>
+                  <span className={`${styles.right} ${styles.mono} ${styles.colHide}`}>{t.price_open}</span>
+                  <span className={`${styles.right} ${styles.mono} ${styles.colHide}`}>{t.close_price}</span>
                     <span className={`${styles.right} ${styles.mono} ${Number(t.profit) >= 0 ? styles.pos : styles.neg}`}>
                       {fmtMoney(t.profit, currency)}
                     </span>
