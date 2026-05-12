@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "dashboard.wongbantercapital.com" }], "destination": "/ui/portfolio.html" },
     { "source": "/", "destination": "/ui/landing.html" },
     { "source": "/dashboard", "destination": "/ui/portfolio.html" },
     { "source": "/app", "destination": "/ui/portfolio.html" },
