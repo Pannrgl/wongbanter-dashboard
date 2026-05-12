@@ -171,6 +171,26 @@
   overflow: hidden;
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
   transform: translateZ(0);
+  position: relative;
+}
+
+.visualShell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(900px 520px at 16% 0%, rgba(34, 255, 175, 0.1), transparent 60%),
+    radial-gradient(900px 520px at 90% 35%, rgba(255, 215, 95, 0.08), transparent 60%);
+  opacity: 0.9;
+}
+
+.visualShell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), transparent 40%, rgba(0, 0, 0, 0.28));
+  opacity: 1;
 }
 
 .visualTop {
@@ -179,6 +199,8 @@
   align-items: center;
   padding: 16px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
 }
 
 .visualTitle {
@@ -220,14 +242,30 @@
 .chartWrap {
   height: 470px;
   padding: 14px;
+  position: relative;
+  z-index: 1;
 }
 
 .chart {
   height: 100%;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.22);
+  background: radial-gradient(760px 420px at 20% 0%, rgba(34, 255, 175, 0.12), transparent 62%),
+    radial-gradient(760px 420px at 90% 20%, rgba(255, 215, 95, 0.08), transparent 62%),
+    rgba(0, 0, 0, 0.24);
   overflow: hidden;
+  position: relative;
+}
+
+.chart::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(520px 260px at 30% 20%, rgba(34, 255, 175, 0.08), transparent 62%),
+    radial-gradient(520px 260px at 80% 10%, rgba(255, 215, 95, 0.06), transparent 62%);
+  mix-blend-mode: screen;
+  opacity: 0.65;
 }
 
 .scroll {
@@ -289,11 +327,8 @@
   .visual {
     min-height: 520px;
   }
-}
-
-@media (max-width: 520px) {
-  .inner {
-    padding: 28px 16px 18px;
+  .chartWrap {
+    height: 420px;
   }
 }
 
@@ -301,8 +336,15 @@
   .inner {
     padding: 22px 16px 18px;
   }
+  .visual {
+    min-height: 460px;
+  }
   .chartWrap {
-    height: 420px;
+    height: 360px;
+    padding: 12px;
+  }
+  .visualTop {
+    padding: 14px 14px;
   }
 }
 

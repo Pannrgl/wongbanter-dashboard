@@ -157,7 +157,7 @@
 .perfCard {
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(5, 8, 20, 0.58);
   padding: 16px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
@@ -178,7 +178,7 @@
 .perfCard:hover {
   transform: translateY(-2px);
   border-color: rgba(34, 255, 175, 0.16);
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(5, 8, 20, 0.68);
 }
 
 .perfCardTop {
@@ -251,7 +251,7 @@
 .signalCard {
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(5, 8, 20, 0.58);
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -272,7 +272,7 @@
 .signalCard:hover {
   transform: translateY(-2px);
   border-color: rgba(34, 255, 175, 0.18);
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(5, 8, 20, 0.68);
 }
 
 .signalTop {
@@ -398,7 +398,7 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: radial-gradient(900px 500px at 18% 0%, rgba(34, 255, 175, 0.14), transparent 60%),
     radial-gradient(900px 500px at 90% 40%, rgba(255, 215, 95, 0.11), transparent 60%),
-    rgba(255, 255, 255, 0.04);
+    rgba(0, 0, 0, 0.22);
   padding: 20px 18px;
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
   display: grid;
@@ -438,7 +438,7 @@
 .trustCard {
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(5, 8, 20, 0.58);
   padding: 18px 16px;
   box-shadow: 0 18px 56px rgba(0, 0, 0, 0.4);
   transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
@@ -459,7 +459,7 @@
 .trustCard:hover {
   transform: translateY(-2px);
   border-color: rgba(34, 255, 175, 0.16);
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(5, 8, 20, 0.68);
 }
 
 .trustIcon,
@@ -518,7 +518,7 @@
 .commCard {
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(5, 8, 20, 0.58);
   padding: 16px;
   box-shadow: 0 18px 56px rgba(0, 0, 0, 0.4);
   transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
@@ -527,7 +527,7 @@
 .commCard:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(5, 8, 20, 0.68);
 }
 
 .commTop {
@@ -589,7 +589,7 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: radial-gradient(960px 560px at 18% 0%, rgba(34, 255, 175, 0.14), transparent 60%),
     radial-gradient(960px 560px at 90% 42%, rgba(255, 215, 95, 0.1), transparent 60%),
-    rgba(255, 255, 255, 0.04);
+    rgba(0, 0, 0, 0.22);
   padding: 26px 22px;
   box-shadow: 0 24px 84px rgba(0, 0, 0, 0.58);
   display: grid;
@@ -809,6 +809,9 @@
   .container {
     padding: 0 16px;
   }
+  .section {
+    padding: 72px 0;
+  }
   .perfCards {
     grid-template-columns: 1fr;
   }
@@ -823,5 +826,23 @@
   }
   .signalCtaActions {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .section {
+    padding: 64px 0;
+  }
+  .h2 {
+    letter-spacing: -0.04em;
+  }
+  .perfV {
+    font-size: 30px;
+  }
+  .ctaTitle {
+    letter-spacing: -0.04em;
+  }
+  .footerLinks {
+    gap: 10px;
   }
 }

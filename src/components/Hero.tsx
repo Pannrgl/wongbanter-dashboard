@@ -54,6 +54,7 @@ export function Hero() {
     locale: "en",
     colorTheme: "dark",
     autosize: true,
+    isTransparent: true,
     showVolume: false,
     showMA: false,
     hideDateRanges: false,
