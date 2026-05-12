@@ -52,18 +52,28 @@ def _forward_state() -> tuple[int, dict]:
     if not url:
         return 500, {"ok": False, "error": "MT5_EXECUTOR_BASE_URL or MT5_EXECUTOR_URL not set"}
 
-    req = urllib.request.Request(url, headers={"Accept": "application/json"}, method="GET")
+    req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "wongbanter-dashboard"}, method="GET")
     try:
         with urllib.request.urlopen(req, timeout=10) as res:
             raw = res.read().decode("utf-8", errors="replace")
             try:
-                return int(res.status), json.loads(raw) if raw else {"ok": True}
+                payload = json.loads(raw) if raw else {}
+                if isinstance(payload, dict):
+                    if "ok" not in payload:
+                        payload["ok"] = True
+                    return int(res.status), payload
+                return int(res.status), {"ok": True, "data": payload}
             except Exception:
                 return int(res.status), {"ok": True, "raw": raw}
     except urllib.error.HTTPError as e:
         raw = e.read().decode("utf-8", errors="replace")
         try:
-            return int(e.code), json.loads(raw) if raw else {"ok": False}
+            payload = json.loads(raw) if raw else {}
+            if isinstance(payload, dict):
+                if "ok" not in payload:
+                    payload["ok"] = False
+                return int(e.code), payload
+            return int(e.code), {"ok": False, "data": payload}
         except Exception:
             return int(e.code), {"ok": False, "raw": raw}
     except Exception as e:
