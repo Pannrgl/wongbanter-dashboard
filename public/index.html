@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WongBanter Dashboard — Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg">
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="glow g3"></div>
+    </div>
+
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"><span class="logo-text">WB</span></div>
+          <div>
+            <div class="brand-title">WongBanter</div>
+            <div class="brand-sub" id="brandSub">Dashboard overview • MT5 realtime</div>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="chip" id="chipStatus">
+            <span class="dot" id="dot"></span>
+            <span class="mono" id="statusText">Checking…</span>
+          </div>
+          <div class="chip" id="chipMT5">
+            <span class="dot" id="mt5Dot"></span>
+            <span class="mono" id="mt5Text">MT5…</span>
+          </div>
+          <div class="chip" id="chipWS">
+            <span class="dot" id="wsDot"></span>
+            <span class="mono" id="wsText">WS…</span>
+          </div>
+          <div class="chip" id="chipPing">
+            <span class="dot" id="pingDot"></span>
+            <span class="mono" id="pingText">— ms</span>
+          </div>
+          <button class="btn primary" id="refreshBtn" type="button">Resync</button>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card span2">
+          <div class="card-head">
+            <div>
+              <div class="h">Dashboard Overview</div>
+              <div class="sub">Ringkasan performa akun & posisi berjalan</div>
+            </div>
+            <div class="meta mono" id="metaLine">—</div>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="k">Balance</div>
+              <div class="v mono" id="kBalance">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Equity</div>
+              <div class="v mono" id="kEquity">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Floating PnL</div>
+              <div class="v mono" id="kFloat">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Realized PnL (Today)</div>
+              <div class="v mono" id="kToday">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Winrate</div>
+              <div class="v mono" id="kWinrate">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Trades (Today)</div>
+              <div class="v mono" id="kTrades">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Profit Factor</div>
+              <div class="v mono" id="kPF">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Free Margin</div>
+              <div class="v mono" id="kFree">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Margin Level</div>
+              <div class="v mono" id="kLevel">—</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Leverage</div>
+              <div class="v mono" id="kLev">—</div>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="panel">
+              <div class="ph">
+                <div class="h2">Equity Pulse</div>
+                <div class="mono mini">LIVE</div>
+              </div>
+              <div class="pulse-wrap">
+                <div class="spark" id="spark">
+                  <svg viewBox="0 0 420 220" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="gradLine" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stop-color="rgba(124, 92, 255, 1)" />
+                        <stop offset="1" stop-color="rgba(46, 233, 255, 1)" />
+                      </linearGradient>
+                      <linearGradient id="gradArea" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="rgba(46, 233, 255, 0.35)" />
+                        <stop offset="1" stop-color="rgba(46, 233, 255, 0)" />
+                      </linearGradient>
+                    </defs>
+                    <path id="line" d="" fill="none" stroke="url(#gradLine)" stroke-width="2.6" />
+                    <path id="area" d="" fill="url(#gradArea)" />
+                  </svg>
+                </div>
+                <div class="chart pulse-chart" id="equityChart" aria-hidden="true"></div>
+                <div class="pulse-hud">
+                  <div class="pulse-tag mono">EQUITY</div>
+                  <div class="pulse-sub mono" id="pulseSub">Waiting for data…</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="ph">
+                <div class="h2">PnL Calendar</div>
+                <div class="mono mini" id="calTitle">—</div>
+              </div>
+              <div class="calendar" id="calendar"></div>
+              <div class="cal-legend">
+                <span class="pill pos">+ Profit</span>
+                <span class="pill neg">- Loss</span>
+                <span class="pill">0 / no trades</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <div class="h">Position Blotter</div>
+              <div class="sub">Posisi berjalan (PnL realtime)</div>
+            </div>
+            <div class="mono mini" id="openCount">—</div>
+          </div>
+          <div class="filter">
+            <input class="input mono" id="openSearch" placeholder="Filter symbol / side…" />
+          </div>
+          <div class="list" id="openList"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <div class="h">Trade Journal</div>
+              <div class="sub">Riwayat eksekusi realtime (scrollable)</div>
+            </div>
+            <div class="mono mini" id="closedCount">—</div>
+          </div>
+          <div class="filter">
+            <input class="input mono" id="historySearch" placeholder="Search symbol / side…" />
+          </div>
+          <div class="list" id="closedList"></div>
+        </section>
+
+        <section class="card span2">
+          <div class="card-head">
+            <div>
+              <div class="h">Market Radar</div>
+              <div class="sub">Top movers, risk meter, dan symbol focus dari aktivitas trading</div>
+            </div>
+            <div class="mono mini" id="radarUpdated">—</div>
+          </div>
+          <div class="radar">
+            <div class="panel">
+              <div class="ph">
+                <div class="h2">Top Movers</div>
+                <div class="mono mini" id="radarMoversMeta">—</div>
+              </div>
+              <div class="radar-list" id="radarMovers"></div>
+            </div>
+
+            <div class="panel">
+              <div class="ph">
+                <div class="h2">Risk Meter</div>
+                <div class="mono mini" id="radarRiskText">—</div>
+              </div>
+              <div class="meter">
+                <div class="meter-bar" id="radarRiskBar"></div>
+              </div>
+              <div class="radar-kvs">
+                <div class="radar-kv">
+                  <div class="k">Margin Level</div>
+                  <div class="v mono" id="radarML">—</div>
+                </div>
+                <div class="radar-kv">
+                  <div class="k">Free Margin</div>
+                  <div class="v mono" id="radarFM">—</div>
+                </div>
+                <div class="radar-kv">
+                  <div class="k">Exposure</div>
+                  <div class="v mono" id="radarEX">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="ph">
+                <div class="h2">Symbol Focus</div>
+                <div class="mono mini" id="radarFocusMeta">—</div>
+              </div>
+              <div class="radar-list" id="radarFocus"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span2">
+          <div class="card-head">
+            <div>
+              <div class="h">Trading Desk Intelligence</div>
+              <div class="sub">Performance + risk intelligence layer • cinematic, clean, dan realtime</div>
+            </div>
+            <div class="mono mini" id="piTitle">—</div>
+          </div>
+          <div class="pi">
+            <div class="pi-left">
+              <div class="pi-hero">
+                <div class="pi-hero-top">
+                  <div class="pi-kicker">Desk Intelligence</div>
+                  <div class="pi-head">Trading desk status at-a-glance</div>
+                  <div class="pi-sub" id="piSub">—</div>
+                </div>
+                <div class="pi-hero-stats">
+                  <div class="pi-stat">
+                    <div class="k">Total Growth</div>
+                    <div class="v mono" id="piGrowth">—</div>
+                    <div class="m mono" id="piGrowthPct">—</div>
+                  </div>
+                  <div class="pi-stat">
+                    <div class="k">Monthly Return</div>
+                    <div class="v mono" id="piMonth">—</div>
+                    <div class="m mono" id="piMonthPct">—</div>
+                  </div>
+                  <div class="pi-stat">
+                    <div class="k">Daily PnL</div>
+                    <div class="v mono" id="piDay">—</div>
+                    <div class="m mono" id="piDayPct">—</div>
+                  </div>
+                  <div class="pi-stat">
+                    <div class="k">Winrate</div>
+                    <div class="v mono" id="piWR">—</div>
+                    <div class="m mono" id="piWRCue">—</div>
+                  </div>
+                  <div class="pi-stat">
+                    <div class="k">Profit Factor</div>
+                    <div class="v mono" id="piPF2">—</div>
+                    <div class="m mono" id="piPFCue">—</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pi-growth">
+                <div class="pi-growth-head">
+                  <div class="h2">Equity Curve</div>
+                  <div class="mono mini" id="piDD">—</div>
+                </div>
+                <div class="pi-growth-chart" id="piGrowthChart" aria-hidden="true"></div>
+                <div class="pi-growth-mini">
+                  <div class="pi-mini">
+                    <div class="k">Volatility Pulse</div>
+                    <div class="v mono" id="piPulse">—</div>
+                  </div>
+                  <div class="pi-mini">
+                    <div class="k">Session</div>
+                    <div class="v mono" id="piSession">—</div>
+                  </div>
+                  <div class="pi-mini">
+                    <div class="k">Connection</div>
+                    <div class="v mono" id="piConn">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pi-right">
+              <div class="pi-smart">
+                <div class="ph">
+                  <div class="h2">Risk & Exposure</div>
+                  <div class="mono mini" id="piSmartUpdated">—</div>
+                </div>
+                <div class="pi-smart-grid" id="piSmartGrid"></div>
+              </div>
+
+              <div class="pi-activity">
+                <div class="ph">
+                  <div class="h2">Desk Activity</div>
+                  <div class="mono mini" id="piActTitle">—</div>
+                </div>
+                <div class="pi-timeline" id="piTimeline"></div>
+              </div>
+
+              <div class="pi-daily">
+                <div class="ph">
+                  <div class="h2">Daily PnL</div>
+                  <div class="mono mini" id="piDailyTitle">—</div>
+                </div>
+                <div class="chart tall" id="dailyChart" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
