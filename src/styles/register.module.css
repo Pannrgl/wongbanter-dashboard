@@ -1,0 +1,267 @@
+.page {
+  padding: 28px 0 80px;
+}
+
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.left {
+  padding-top: 18px;
+}
+
+.kicker {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 12px 0 10px;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -0.04em;
+  font-weight: 900;
+}
+
+.sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.sideCard {
+  margin-top: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
+}
+
+.sideRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.sideRow + .sideRow {
+  margin-top: 10px;
+}
+
+.sideK {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.64);
+  font-weight: 900;
+}
+
+.sideV {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 800;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.back:hover {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.formWrap {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.form {
+  padding: 18px 18px;
+}
+
+.formHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+.formTitle {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 16px;
+}
+
+.formSub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.pill {
+  font-size: 11px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 255, 175, 0.2);
+  background: rgba(34, 255, 175, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.formError {
+  border: 1px solid rgba(255, 91, 121, 0.26);
+  background: rgba(255, 91, 121, 0.08);
+  border-radius: 16px;
+  padding: 12px 12px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.formOk {
+  border: 1px solid rgba(34, 255, 175, 0.24);
+  background: rgba(34, 255, 175, 0.08);
+  border-radius: 16px;
+  padding: 12px 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.66);
+  font-weight: 800;
+}
+
+.input {
+  appearance: none;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.22);
+  padding: 12px 12px;
+  color: rgba(255, 255, 255, 0.9);
+  outline: none;
+  font-size: 13px;
+}
+
+.input:focus {
+  border-color: rgba(34, 255, 175, 0.22);
+  box-shadow: 0 0 0 3px rgba(34, 255, 175, 0.08);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.check input {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+.linkLike {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 800;
+}
+
+.err {
+  color: rgba(255, 155, 170, 0.9);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 13px;
+  border: 1px solid rgba(34, 255, 175, 0.26);
+  background: linear-gradient(135deg, rgba(34, 255, 175, 0.18), rgba(255, 215, 95, 0.12));
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition: transform 220ms var(--ease), background 220ms var(--ease);
+}
+
+.submit:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(34, 255, 175, 0.22), rgba(255, 215, 95, 0.14));
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.foot {
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.foot a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    padding-top: 6px;
+  }
+}
+
+@media (max-width: 540px) {
+  .shell {
+    padding: 0 16px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+

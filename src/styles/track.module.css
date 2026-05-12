@@ -1,0 +1,228 @@
+.page {
+  padding: 28px 0 70px;
+}
+
+.head {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.headTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.title {
+  margin: 10px 0 10px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  letter-spacing: -0.04em;
+  font-weight: 900;
+}
+
+.sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  max-width: 86ch;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.refresh {
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 900;
+  font-size: 13px;
+  border: 1px solid rgba(34, 255, 175, 0.2);
+  background: rgba(34, 255, 175, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition: transform 220ms var(--ease), background 220ms var(--ease);
+  white-space: nowrap;
+}
+
+.refresh:hover {
+  transform: translateY(-1px);
+  background: rgba(34, 255, 175, 0.11);
+}
+
+.refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  margin-top: 14px;
+  border: 1px solid rgba(255, 91, 121, 0.26);
+  background: rgba(255, 91, 121, 0.08);
+  border-radius: 16px;
+  padding: 12px 12px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+}
+
+.grid {
+  max-width: 1180px;
+  margin: 18px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.card,
+.cardWide {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
+}
+
+.cardWide {
+  grid-column: 1 / -1;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 13px;
+}
+
+.chip,
+.chipAlt {
+  font-size: 11px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+.chipAlt {
+  border-color: rgba(255, 215, 95, 0.16);
+  background: rgba(255, 215, 95, 0.08);
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.kpi {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(0, 0, 0, 0.18);
+  padding: 10px 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.k {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 800;
+}
+
+.v {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.table {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.thead,
+.trow {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 0.7fr 0.9fr;
+  gap: 10px;
+  padding: 12px 12px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.thead {
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 800;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trow:last-child {
+  border-bottom: none;
+}
+
+.right {
+  text-align: right;
+}
+
+.buy {
+  color: rgba(34, 255, 175, 0.92);
+  font-weight: 900;
+}
+
+.sell {
+  color: rgba(255, 91, 121, 0.9);
+  font-weight: 900;
+}
+
+.pos {
+  color: rgba(34, 255, 175, 0.92);
+}
+
+.neg {
+  color: rgba(255, 91, 121, 0.9);
+}
+
+.empty {
+  padding: 14px 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+@media (max-width: 540px) {
+  .head,
+  .grid {
+    padding: 0 16px;
+  }
+  .headTop {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
