@@ -26,16 +26,18 @@ type Stats = {
   trades?: number;
 };
 
-type Position = {
+type ClosedTrade = {
   position_id: number;
   symbol: string;
   side: "BUY" | "SELL";
   volume: number;
   price_open: number;
-  price_current: number;
+  close_price: number;
   sl: number | null;
   tp: number | null;
   profit: number;
+  open_time: number;
+  close_time: number;
 };
 
 type StatePayload = {
@@ -43,7 +45,7 @@ type StatePayload = {
   server_time?: number;
   account?: Account | null;
   stats?: Stats | null;
-  open_positions?: Position[];
+  closed_trades?: ClosedTrade[];
 };
 
 function fmt(n: unknown, digits = 2) {
@@ -65,17 +67,40 @@ export function Track() {
   const [state, setState] = useState<StatePayload | null>(null);
   const currency = state?.account?.currency || "";
 
-  const tradesToday = useMemo(() => {
-    const s = state?.stats;
-    if (!s) return "—";
-    const v = s.orders_filled ?? s.deals_in ?? s.trades;
-    return v === undefined || v === null ? "—" : String(v);
-  }, [state?.stats]);
+  const statsLocal = useMemo(() => {
+    if (!state?.closed_trades) return { winrate: "—", pnl: "—", trades: "—", floating: "—" };
+
+    const floating = (Number(state.account?.equity) || 0) - (Number(state.account?.balance) || 0);
+
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const todayTs = Math.floor(todayStart.getTime() / 1000);
+
+    const todayTrades = state.closed_trades.filter(t => t.close_time >= todayTs);
+    const tradesCount = todayTrades.length;
+
+    let wins = 0;
+    let realizedPnl = 0;
+
+    todayTrades.forEach(t => {
+      realizedPnl += Number(t.profit) || 0;
+      if (t.profit > 0) wins++;
+    });
+
+    const winrate = tradesCount > 0 ? ((wins / tradesCount) * 100).toFixed(1) + "%" : "0%";
+
+    return {
+      winrate,
+      pnl: fmtMoney(realizedPnl, currency),
+      trades: tradesCount.toString(),
+      floating: fmtMoney(floating, currency)
+    };
+  }, [state?.closed_trades, state?.account, currency]);
 
   const load = async () => {
     setError(null);
     try {
-      const res = await fetch("https://mt5.wongbantercapital.com/state", { cache: "no-store" });
+      const res = await fetch("/api/state", { cache: "no-store" });
       const data = (await res.json().catch(() => ({}))) as StatePayload;
       if (!res.ok || !data || data.ok !== true) {
         const maybe = data as unknown as { error?: unknown };
@@ -102,16 +127,22 @@ export function Track() {
     <main className={styles.page}>
       <Seo title="Track My Portfolio — WongBanter Capital" description="Track account performance, equity, and positions in real time." />
 
+      <div className={styles.bg}>
+        <div className={`${styles.glow} ${styles.g1}`}></div>
+        <div className={`${styles.glow} ${styles.g2}`}></div>
+        <div className={`${styles.glow} ${styles.g3}`}></div>
+      </div>
+
       <div className={styles.head}>
         <div className={styles.headTop}>
           <div>
             <h1 className={styles.title}>Track My Portfolio</h1>
             <p className={styles.sub}>
-              Overview akun dan posisi berjalan. Data bersumber dari executor MT5 melalui endpoint <span className={styles.mono}>/state</span>.
+              Performance tracker eksklusif. Data sinkron realtime dari eksekusi MT5.
             </p>
           </div>
           <button className={styles.refresh} type="button" onClick={load} disabled={loading}>
-            {loading ? "Loading…" : "Refresh"}
+            {loading ? "Syncing…" : "Live Sync"}
           </button>
         </div>
 
@@ -119,9 +150,12 @@ export function Track() {
       </div>
 
       <div className={styles.grid}>
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.span4}`}>
           <div className={styles.cardHead}>
-            <span className={styles.cardTitle}>Account</span>
+            <div>
+              <div className={styles.cardTitle}>Account Overview</div>
+              <div className={styles.cardSub}>Status koneksi ke MT5</div>
+            </div>
             <span className={styles.chip}>{state?.account?.server ? "Connected" : "Waiting"}</span>
           </div>
           <div className={styles.kpis}>
@@ -137,15 +171,22 @@ export function Track() {
               <span className={styles.k}>Leverage</span>
               <span className={styles.v}>{state?.account?.leverage ? `1:${state.account.leverage}` : "—"}</span>
             </div>
+            <div className={styles.kpi}>
+              <span className={styles.k}>Margin Free</span>
+              <span className={styles.v}>{fmt(state?.account?.margin_free, 2)}</span>
+            </div>
           </div>
         </div>
 
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.span8}`}>
           <div className={styles.cardHead}>
-            <span className={styles.cardTitle}>Portfolio</span>
-            <span className={styles.chipAlt}>{(state?.open_positions?.length ?? 0) > 0 ? "Live" : "—"}</span>
+            <div>
+              <div className={styles.cardTitle}>Performance Pulse</div>
+              <div className={styles.cardSub}>Ringkasan metrics hari ini (Realtime)</div>
+            </div>
+            <span className={styles.chip}>Live Data</span>
           </div>
-          <div className={styles.kpis}>
+          <div className={styles.kpis} style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
             <div className={styles.kpi}>
               <span className={styles.k}>Balance</span>
               <span className={styles.v}>{fmt(state?.account?.balance, 2)}{currency ? ` ${currency}` : ""}</span>
@@ -156,57 +197,63 @@ export function Track() {
             </div>
             <div className={styles.kpi}>
               <span className={styles.k}>Floating PnL</span>
-              <span className={styles.v}>{fmtMoney((Number(state?.account?.equity) || 0) - (Number(state?.account?.balance) || 0), currency)}</span>
+              <span className={`${styles.v} ${styles.mono}`}>{statsLocal.floating}</span>
+            </div>
+            <div className={styles.kpi}>
+              <span className={styles.k}>Realized (Today)</span>
+              <span className={`${styles.v} ${styles.mono}`}>{statsLocal.pnl}</span>
+            </div>
+            <div className={styles.kpi}>
+              <span className={styles.k}>Trades (Today)</span>
+              <span className={styles.v}>{statsLocal.trades}</span>
+            </div>
+            <div className={styles.kpi}>
+              <span className={styles.k}>Winrate (Today)</span>
+              <span className={styles.v}>{statsLocal.winrate}</span>
             </div>
           </div>
         </div>
 
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.span12}`}>
           <div className={styles.cardHead}>
-            <span className={styles.cardTitle}>Today</span>
-            <span className={styles.chip}>Realtime</span>
+            <div>
+              <div className={styles.cardTitle}>Trade Journal</div>
+              <div className={styles.cardSub}>Riwayat eksekusi terakhir</div>
+            </div>
+            <span className={styles.chip}>{(state?.closed_trades?.length ?? 0).toString()} Trades</span>
           </div>
-          <div className={styles.kpis}>
-            <div className={styles.kpi}>
-              <span className={styles.k}>Realized PnL</span>
-              <span className={styles.v}>{fmtMoney(state?.stats?.net, currency)}</span>
-            </div>
-            <div className={styles.kpi}>
-              <span className={styles.k}>Trades</span>
-              <span className={styles.v}>{tradesToday}</span>
-            </div>
-            <div className={styles.kpi}>
-              <span className={styles.k}>Winrate</span>
-              <span className={styles.v}>{state?.stats?.winrate === null || state?.stats?.winrate === undefined ? "—" : `${fmt(state.stats.winrate, 1)}%`}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWide}>
-          <div className={styles.cardHead}>
-            <span className={styles.cardTitle}>Open Positions</span>
-            <span className={styles.chipAlt}>{(state?.open_positions?.length ?? 0).toString()}</span>
-          </div>
-          <div className={styles.table}>
-            <div className={styles.thead}>
-              <span>Symbol</span>
-              <span>Side</span>
-              <span className={styles.right}>Volume</span>
-              <span className={styles.right}>PnL</span>
-            </div>
-            {(state?.open_positions || []).slice(0, 20).map((p) => (
-              <div key={p.position_id} className={styles.trow}>
-                <span className={styles.mono}>{p.symbol}</span>
-                <span className={p.side === "BUY" ? styles.buy : styles.sell}>{p.side}</span>
-                <span className={`${styles.right} ${styles.mono}`}>{fmt(p.volume, 2)}</span>
-                <span className={`${styles.right} ${styles.mono} ${Number(p.profit) >= 0 ? styles.pos : styles.neg}`}>
-                  {fmtMoney(p.profit, currency)}
-                </span>
+          <div className={styles.tableWrap}>
+            <div className={styles.table}>
+              <div className={styles.thead}>
+                <span>Time (Close)</span>
+                <span>Symbol</span>
+                <span>Side</span>
+                <span className={styles.right}>Open</span>
+                <span className={styles.right}>Close</span>
+                <span className={styles.right}>PnL</span>
               </div>
-            ))}
-            {!loading && (!state?.open_positions || state.open_positions.length === 0) ? (
-              <div className={styles.empty}>No open positions.</div>
-            ) : null}
+              {(state?.closed_trades || []).slice(0, 30).map((t) => {
+                const date = new Date(t.close_time * 1000);
+                const timeStr = date.toLocaleTimeString("id-ID", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                return (
+                  <div key={t.position_id} className={styles.trow}>
+                    <span className={styles.mono} style={{ color: "rgba(255,255,255,0.6)" }}>{timeStr}</span>
+                    <span className={styles.mono}>{t.symbol}</span>
+                    <span>
+                      <span className={t.side === "BUY" ? styles.buy : styles.sell}>{t.side}</span>
+                    </span>
+                    <span className={`${styles.right} ${styles.mono}`}>{t.price_open}</span>
+                    <span className={`${styles.right} ${styles.mono}`}>{t.close_price}</span>
+                    <span className={`${styles.right} ${styles.mono} ${Number(t.profit) >= 0 ? styles.pos : styles.neg}`}>
+                      {fmtMoney(t.profit, currency)}
+                    </span>
+                  </div>
+                );
+              })}
+              {!loading && (!state?.closed_trades || state.closed_trades.length === 0) ? (
+                <div className={styles.empty}>No closed trades available.</div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
