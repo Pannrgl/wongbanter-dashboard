@@ -88,6 +88,7 @@ let lastSyncLabel = "—";
 let mt5Status = "unknown";
 let wsStatus = "unknown";
 let timelineItems = [];
+let apiPrefix = null;
 
 const openNodes = new Map();
 let lastEquityPointAt = 0;
@@ -198,6 +199,7 @@ async function checkHealth() {
       const t1 = performance.now();
       const data = await res.json().catch(() => ({}));
       if (data && data.ok) {
+        apiPrefix = url.startsWith("/api/") ? "/api" : "";
         setStatus(true, "Online");
         brandSub.textContent = "Dashboard live • MT5 realtime";
         metaLine.textContent = `${nowStamp()} • ${location.host} • ${Math.round(t1 - t0)} ms`;
@@ -699,10 +701,17 @@ function applyDailyChart(daily) {
 }
 
 async function refreshState() {
-  try {
-    const { data } = await fetchJson("/state");
-    if (data && data.ok) applyState(data);
-  } catch {}
+  const urls = apiPrefix === "/api" ? ["/api/state"] : apiPrefix === "" ? ["/state"] : ["/state", "/api/state"];
+  for (const url of urls) {
+    try {
+      const { ok, data } = await fetchJson(url);
+      if (ok && data && data.ok) {
+        applyState(data);
+        markSync("poll");
+        return;
+      }
+    } catch {}
+  }
 }
 
 function sumDaily(rows, days) {
@@ -1203,6 +1212,14 @@ function startSSE() {
 
 function startRealtime() {
   initCharts();
+  if (apiPrefix === "/api") {
+    wsMode = "poll";
+    setChip(wsDot, wsText, "idle", "Polling");
+    setChip(mt5Dot, mt5Text, "idle", "MT5 via executor");
+    setChip(pingDot, pingText, "idle", "— ms");
+    setInterval(refreshState, 2500);
+    return;
+  }
   if (typeof io === "function") {
     try {
       wsErrorCount = 0;
@@ -1377,9 +1394,12 @@ historySearch?.addEventListener("input", () => setClosedFiltered(stateCache ? st
 openSearch?.addEventListener("input", () => setOpenFiltered(stateCache ? stateCache.open_positions : []));
 
 renderSpark(randomWalk(26));
-checkHealth();
-refreshState();
-startRealtime();
+async function boot() {
+  await checkHealth();
+  await refreshState();
+  startRealtime();
+}
+boot();
 setInterval(() => {
   const dt = lastSyncAt ? Math.max(0, Math.round((Date.now() - lastSyncAt) / 1000)) : null;
   const sync = dt === null ? "no sync" : dt <= 1 ? "sync now" : `sync ${dt}s`;

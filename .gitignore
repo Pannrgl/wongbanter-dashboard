@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .env
+local.secrets.json
 .venv/
 venv/
 node_modules/

@@ -1,23 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    {
-      "source": "/webhook",
-      "destination": "/server.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/public/$1"
+    { "source": "/", "destination": "/ui/portfolio.html" },
+    { "source": "/assets/:path*", "destination": "/ui/:path*" }
+  ],
+  "functions": {
+    "api/**/*.py": {
+      "maxDuration": 10,
+      "excludeFiles": "{gas.py,gas_original.py,mt5_orders.py}"
     }
-  ]
+  }
 }
