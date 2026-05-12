@@ -32,6 +32,7 @@
   background: rgba(0, 0, 0, 0.18);
   position: relative;
   z-index: 2;
+  overflow: hidden;
 }
 
 .inner {
@@ -260,7 +261,16 @@
 .ticker :global(iframe),
 .chart :global(iframe) {
   background: transparent;
-  filter: brightness(0.92) contrast(1.08) saturate(1.05);
+  filter: brightness(0.82) contrast(1.12) saturate(1.06);
+}
+
+.chart::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.5));
+  opacity: 0.9;
 }
 
 .chart::after {

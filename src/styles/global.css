@@ -34,6 +34,19 @@ body {
   overflow-x: hidden;
 }
 
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+canvas,
+video,
+iframe {
+  max-width: 100%;
+}
+
 a {
   color: inherit;
 }
