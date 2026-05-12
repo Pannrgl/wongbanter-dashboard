@@ -75,8 +75,8 @@ export function Landing() {
             <h2 className={styles.h2}>Live performance preview</h2>
             <p className={styles.p}>
               Ini preview visual untuk marketing. Live dashboard asli berada di{" "}
-              <a className={styles.inlineLink} href="https://dashboard.wongbantercapital.com">
-                dashboard.wongbantercapital.com
+              <a className={styles.inlineLink} href="https://mt5.wongbantercapital.com/">
+                mt5.wongbantercapital.com
               </a>
               .
             </p>
@@ -343,7 +343,7 @@ export function Landing() {
               <Link to="/register" className={styles.primaryBtn}>
                 Get Free Signals
               </Link>
-              <a className={styles.ghostBtn} href="https://dashboard.wongbantercapital.com">
+              <a className={styles.ghostBtn} href="https://mt5.wongbantercapital.com/">
                 View Live Portfolio
               </a>
             </div>
@@ -481,7 +481,7 @@ export function Landing() {
                 Lihat dashboard realtime untuk memantau equity, posisi berjalan, dan performa secara transparan.
               </p>
               <div className={styles.ctaActions}>
-                <a className={styles.primaryBtn} href="https://dashboard.wongbantercapital.com">
+                <a className={styles.primaryBtn} href="https://mt5.wongbantercapital.com/">
                   View Live Portfolio
                 </a>
                 <Link to="/register" className={styles.ghostBtn}>
@@ -524,7 +524,7 @@ export function Landing() {
                 <a className={styles.footerLink} href="#community">
                   Community
                 </a>
-                <a className={styles.footerLink} href="https://dashboard.wongbantercapital.com">
+                <a className={styles.footerLink} href="https://mt5.wongbantercapital.com/">
                   Live Portfolio
                 </a>
               </div>

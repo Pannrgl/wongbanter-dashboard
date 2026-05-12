@@ -95,7 +95,7 @@ export function Hero() {
             <Link to="/register" className={styles.primary}>
               Get Free Signals
             </Link>
-            <a className={styles.ghost} href="https://dashboard.wongbantercapital.com">
+            <a className={styles.ghost} href="https://mt5.wongbantercapital.com/">
               View Live Portfolio
             </a>
           </div>

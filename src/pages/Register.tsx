@@ -120,9 +120,9 @@ export function Register() {
               <span className={styles.sideV}>Institutional workflow</span>
             </div>
           </div>
-          <Link className={styles.back} to="/">
+          <a className={styles.back} href="https://wongbantercapital.com/">
             ← Back to Landing
-          </Link>
+          </a>
         </div>
 
         <div className={styles.formWrap}>
@@ -229,7 +229,7 @@ export function Register() {
             </button>
 
             <div className={styles.foot}>
-              Sudah punya akun? <Link to="/track">Track My Portfolio</Link>
+              Sudah punya akun? <Link to="/login">Login</Link>
             </div>
           </form>
         </div>

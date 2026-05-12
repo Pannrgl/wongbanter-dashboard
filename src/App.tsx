@@ -6,7 +6,6 @@ import { Navbar } from "./components/Navbar";
 import { Landing } from "./pages/Landing";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Track } from "./pages/Track";
 import { DashboardLayout } from "./pages/dashboard/DashboardLayout";
 import { DashboardHome } from "./pages/dashboard/DashboardHome";
 import { DashboardMenu } from "./pages/dashboard/DashboardMenu";
@@ -40,7 +39,6 @@ export function App() {
         <Route path="/" element={isDashboardHost ? <Navigate to="/dashboard" replace /> : <Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/track" element={<Track />} />
         <Route
           path="/dashboard"
           element={

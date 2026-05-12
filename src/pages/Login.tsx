@@ -70,9 +70,9 @@ export function Login() {
           <div className={styles.kicker}>WongBanter Dashboard</div>
           <h1 className={styles.title}>Login</h1>
           <p className={styles.sub}>Masuk untuk mengakses dashboard dan fitur tracking.</p>
-          <Link className={styles.back} to="/">
+          <a className={styles.back} href="https://wongbantercapital.com/">
             ← Back to Landing
-          </Link>
+          </a>
         </div>
 
         <div className={styles.formWrap}>
@@ -126,4 +126,3 @@ export function Login() {
     </main>
   );
 }
-
