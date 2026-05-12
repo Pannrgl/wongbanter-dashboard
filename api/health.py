@@ -4,6 +4,8 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, urlunparse
 
+DEFAULT_MT5_EXECUTOR_BASE_URL = "https://a950-13-38-39-20.ngrok-free.app"
+
 
 def _executor_base_url() -> str:
     base = (os.getenv("MT5_EXECUTOR_BASE_URL") or "").strip()
@@ -12,7 +14,8 @@ def _executor_base_url() -> str:
 
     trade_url = (os.getenv("MT5_EXECUTOR_URL") or "").strip()
     if not trade_url:
-        return ""
+        base = DEFAULT_MT5_EXECUTOR_BASE_URL.strip()
+        return base.rstrip("/") if base else ""
 
     parsed = urlparse(trade_url)
     if parsed.scheme and parsed.netloc:

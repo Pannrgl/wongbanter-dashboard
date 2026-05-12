@@ -4,6 +4,8 @@ import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler
 
+DEFAULT_MT5_EXECUTOR_BASE_URL = "https://a950-13-38-39-20.ngrok-free.app"
+
 
 def _read_body(req: BaseHTTPRequestHandler) -> bytes:
     length = int(req.headers.get("content-length") or "0")
@@ -26,6 +28,14 @@ def _json_response(req: BaseHTTPRequestHandler, status: int, payload: dict) -> N
 
 def _forward_to_executor(payload: dict, incoming_secret: str | None) -> tuple[int, dict]:
     executor_url = (os.getenv("MT5_EXECUTOR_URL") or "").strip()
+    if not executor_url:
+        base = (os.getenv("MT5_EXECUTOR_BASE_URL") or "").strip()
+        if base:
+            executor_url = base.rstrip("/") + "/execute"
+        else:
+            base = DEFAULT_MT5_EXECUTOR_BASE_URL.strip()
+            executor_url = base.rstrip("/") + "/execute" if base else ""
+
     if not executor_url:
         return 500, {"ok": False, "error": "MT5_EXECUTOR_URL not set"}
 
