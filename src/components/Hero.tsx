@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useEffect, useMemo, useRef } from "react";
+import { Link } from "react-router-dom";
 
 import styles from "../styles/hero.module.css";
 
@@ -71,35 +71,37 @@ export function Hero() {
   });
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-label="Hero">
       <div className={styles.ticker} ref={tickerRef} />
 
       <div className={styles.inner}>
         <div className={styles.copy}>
           <div className={styles.badge}>
             <span className={styles.badgeDot} />
-            <span className={styles.badgeText}>Capital built for modern traders</span>
-            <span className={styles.badgeChip}>Institutional workflow</span>
+            <span className={styles.badgeText}>Premium free signal platform</span>
+            <span className={styles.badgeChip}>Live transparency</span>
           </div>
           <h1 className={styles.title}>
-            Trade With Institutional <span className={styles.grad}>Precision</span>
+            Institutional Signals.
+            <br />
+            <span className={styles.grad}>Realtime Proof.</span>
           </h1>
           <p className={styles.sub}>
-            Execution presisi, risk intelligence, dan real-time monitoring—dirancang untuk trader yang ingin scale dengan disiplin, clarity, dan
-            sistem.
+            Free signal XAUUSD + market analysis dengan format rapi dan risk-aware. Semua dibangun dengan gaya institutional dan transparansi
+            realtime.
           </p>
           <div className={styles.actions}>
             <Link to="/register" className={styles.primary}>
-              Get Started
+              Get Free Signals
             </Link>
-            <Link to="/track" className={styles.ghost}>
-              Track My Portfolio
-            </Link>
+            <a className={styles.ghost} href="https://dashboard.wongbantercapital.com">
+              View Live Portfolio
+            </a>
           </div>
           <div className={styles.trust}>
-            <span className={styles.trustPill}>Secure transport</span>
-            <span className={styles.trustPill}>Audit-ready logs</span>
-            <span className={styles.trustPill}>Realtime telemetry</span>
+            <span className={styles.trustPill}>Realtime dashboard</span>
+            <span className={styles.trustPill}>Institutional analysis</span>
+            <span className={styles.trustPill}>Smart risk management</span>
           </div>
         </div>
 
@@ -108,10 +110,10 @@ export function Hero() {
             <div className={styles.visualTop}>
               <div className={styles.visualTitle}>
                 <div className={styles.vtMain}>Market Overview</div>
-                <div className={styles.vtSub}>TradingView-powered live pricing</div>
+                <div className={styles.vtSub}>Live chart background</div>
               </div>
               <div className={styles.visualPills}>
-                <span className={styles.pill}>WBC Edge</span>
+                <span className={styles.pill}>WBC Signals</span>
                 <span className={styles.pillOk}>Live</span>
               </div>
             </div>
@@ -128,4 +130,3 @@ export function Hero() {
     </section>
   );
 }
-

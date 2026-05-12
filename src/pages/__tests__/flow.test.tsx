@@ -13,7 +13,7 @@ test("landing → register navigation works", async () => {
     </MemoryRouter>
   );
 
-  const cta = (await screen.findAllByRole("link", { name: /get started/i }))[0]!;
+  const cta = (await screen.findAllByRole("link", { name: /get free signals/i }))[0]!;
   await user.click(cta);
 
   expect(await screen.findByRole("heading", { name: /start your evaluation/i })).toBeInTheDocument();

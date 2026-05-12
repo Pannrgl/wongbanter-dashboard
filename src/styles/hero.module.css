@@ -1,20 +1,49 @@
 .hero {
-  padding: 0 0 18px;
+  padding: 0 0 26px;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 74px);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(1100px 700px at 20% 5%, rgba(34, 255, 175, 0.12), transparent 58%),
+    radial-gradient(1100px 700px at 90% 20%, rgba(255, 215, 95, 0.1), transparent 58%),
+    radial-gradient(900px 620px at 55% 70%, rgba(90, 124, 255, 0.1), transparent 60%);
+  opacity: 0.95;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.035;
 }
 
 .ticker {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 2;
 }
 
 .inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 44px 24px 24px;
+  padding: 52px 24px 28px;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 26px;
   align-items: start;
+  position: relative;
+  z-index: 2;
 }
 
 .copy {
@@ -29,6 +58,7 @@
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
 }
 
 .badgeDot {
@@ -60,7 +90,7 @@
   line-height: 1.03;
   letter-spacing: -0.05em;
   margin: 16px 0 12px;
-  font-weight: 900;
+  font-weight: 950;
 }
 
 .grad {
@@ -92,12 +122,13 @@
   justify-content: center;
   border-radius: 14px;
   padding: 12px 16px;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 13px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .primary {
@@ -139,6 +170,7 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   overflow: hidden;
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+  transform: translateZ(0);
 }
 
 .visualTop {
@@ -261,6 +293,12 @@
 
 @media (max-width: 520px) {
   .inner {
+    padding: 28px 16px 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .inner {
     padding: 22px 16px 18px;
   }
   .chartWrap {
@@ -273,4 +311,3 @@
     animation: none;
   }
 }
-

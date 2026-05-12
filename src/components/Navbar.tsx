@@ -36,23 +36,26 @@ export function Navbar() {
         </NavLink>
 
         <nav className={styles.links} aria-label="Primary">
-          <a className={styles.link} href="/#features" onClick={goToSection("features")}>
-            Features
+          <a className={styles.link} href="/#performance" onClick={goToSection("performance")}>
+            Performance
           </a>
-          <a className={styles.link} href="/#stats" onClick={goToSection("stats")}>
-            Stats
+          <a className={styles.link} href="/#signals" onClick={goToSection("signals")}>
+            Signals
           </a>
-          <a className={styles.link} href="/#testimonials" onClick={goToSection("testimonials")}>
-            Testimonials
+          <a className={styles.link} href="/#trust" onClick={goToSection("trust")}>
+            Trust
+          </a>
+          <a className={styles.link} href="/#community" onClick={goToSection("community")}>
+            Community
           </a>
         </nav>
 
         <div className={styles.cta}>
-          <NavLink to="/track" className={({ isActive }) => (isActive ? styles.ghostActive : styles.ghost)}>
-            Track My Portfolio
-          </NavLink>
+          <a className={styles.ghost} href="https://dashboard.wongbantercapital.com">
+            Live Portfolio
+          </a>
           <NavLink to="/register" className={({ isActive }) => (isActive ? styles.primaryActive : styles.primary)}>
-            Get Started
+            Get Free Signals
           </NavLink>
         </div>
       </div>
