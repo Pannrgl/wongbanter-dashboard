@@ -51,7 +51,7 @@ export function Navbar() {
         </nav>
 
         <div className={styles.cta}>
-          <a className={styles.ghost} href="https://dashboard.wongbantercapital.com">
+          <a className={styles.ghost} href="https://mt5.wongbantercapital.com">
             Live Portfolio
           </a>
           <NavLink to="/register" className={({ isActive }) => (isActive ? styles.primaryActive : styles.primary)}>
