@@ -70,14 +70,14 @@
 }
 
 .badgeText {
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.82);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .badgeChip {
-  font-size: 11px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.78);
   padding: 6px 10px;
   border-radius: 999px;
@@ -123,7 +123,7 @@
   border-radius: 14px;
   padding: 12px 16px;
   font-weight: 900;
-  font-size: 13px;
+  font-size: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease);
@@ -151,7 +151,7 @@
 }
 
 .trustPill {
-  font-size: 12px;
+  font-size: 14px;
   padding: 8px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -211,11 +211,11 @@
 .vtMain {
   font-weight: 900;
   letter-spacing: -0.02em;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .vtSub {
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.62);
 }
 
@@ -226,7 +226,7 @@
 
 .pill,
 .pillOk {
-  font-size: 11px;
+  font-size: 14px;
   padding: 7px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -257,6 +257,12 @@
   position: relative;
 }
 
+.ticker :global(iframe),
+.chart :global(iframe) {
+  background: transparent;
+  filter: brightness(0.92) contrast(1.08) saturate(1.05);
+}
+
 .chart::after {
   content: "";
   position: absolute;
@@ -279,7 +285,7 @@
 }
 
 .scrollText {
-  font-size: 11px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.62);
 }
 
