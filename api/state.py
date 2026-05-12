@@ -5,7 +5,7 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, urlunparse
 
-DEFAULT_MT5_EXECUTOR_BASE_URL = "https://a950-13-38-39-20.ngrok-free.app"
+DEFAULT_MT5_EXECUTOR_BASE_URL = "https://mt5.wongbantercapital.com"
 
 
 def _json_response(req: BaseHTTPRequestHandler, status: int, payload: dict) -> None:
@@ -23,7 +23,7 @@ def _json_response(req: BaseHTTPRequestHandler, status: int, payload: dict) -> N
 def _executor_state_url() -> str:
     base = (os.getenv("MT5_EXECUTOR_BASE_URL") or "").strip()
     if base:
-        return base.rstrip("/") + "/state"
+        return base if base.rstrip("/").endswith("/state") else base.rstrip("/") + "/state"
 
     trade_url = (os.getenv("MT5_EXECUTOR_URL") or "").strip()
     if not trade_url:
@@ -35,7 +35,8 @@ def _executor_state_url() -> str:
         base2 = urlunparse((parsed.scheme, parsed.netloc, "", "", "", ""))
         return base2.rstrip("/") + "/state"
 
-    return trade_url.rstrip("/") + "/state"
+    trade_url = trade_url.strip()
+    return trade_url if trade_url.rstrip("/").endswith("/state") else trade_url.rstrip("/") + "/state"
 
 
 def _authorized(req: BaseHTTPRequestHandler) -> bool:
