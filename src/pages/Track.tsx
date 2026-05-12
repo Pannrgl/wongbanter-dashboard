@@ -100,13 +100,15 @@ export function Track() {
   const load = async () => {
     setError(null);
     try {
-      const res = await fetch("/api/state", { cache: "no-store" });
+      const res = await fetch("https://mt5.wongbantercapital.com/state", { cache: "no-store" });
       const data = (await res.json().catch(() => ({}))) as StatePayload;
-      if (!res.ok || !data || data.ok !== true) {
+      if (!res.ok || !data) {
         const maybe = data as unknown as { error?: unknown };
         setError(maybe && "error" in maybe && maybe.error ? String(maybe.error) : "Failed to fetch state");
         setState(null);
       } else {
+        // Karena response mt5.wongbantercapital.com mungkin tidak ada 'ok: true' secara default
+        data.ok = true;
         setState(data);
       }
     } catch (e) {

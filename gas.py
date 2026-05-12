@@ -13,6 +13,13 @@ from mt5_orders import compute_closed_pnl, compute_daily_closed_pnl, compute_dea
 
 app = Flask(__name__)
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, User-Agent, X-Dashboard-Secret'
+    return response
+
 TELEGRAM_BOT_TOKEN = "7408852623:AAHJ_sresG7ItyBExmzpHxDZokqJGMQKBCg"
 TELEGRAM_CHAT_ID = "6470089932"
 
