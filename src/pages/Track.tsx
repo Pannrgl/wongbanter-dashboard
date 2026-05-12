@@ -75,7 +75,7 @@ export function Track() {
   const load = async () => {
     setError(null);
     try {
-      const res = await fetch("/state", { cache: "no-store" });
+      const res = await fetch("https://mt5.wongbantercapital.com/state", { cache: "no-store" });
       const data = (await res.json().catch(() => ({}))) as StatePayload;
       if (!res.ok || !data || data.ok !== true) {
         const maybe = data as unknown as { error?: unknown };
