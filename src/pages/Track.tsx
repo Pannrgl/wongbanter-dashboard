@@ -107,7 +107,7 @@ export function Track() {
           <div>
             <h1 className={styles.title}>Track My Portfolio</h1>
             <p className={styles.sub}>
-              Overview akun dan posisi berjalan. Data bersumber dari executor MT5 melalui endpoint <span className={styles.mono}>/api/state</span>.
+              Overview akun dan posisi berjalan. Data bersumber dari executor MT5 melalui endpoint <span className={styles.mono}>/state</span>.
             </p>
           </div>
           <button className={styles.refresh} type="button" onClick={load} disabled={loading}>
